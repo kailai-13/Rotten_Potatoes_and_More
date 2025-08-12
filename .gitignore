@@ -1,3 +1,5 @@
 *Datasets
 *models
 *rotten_potatoes.keras
+*.ipynb_checkpoints
+*fruit_fresh_rotten_model.h5
