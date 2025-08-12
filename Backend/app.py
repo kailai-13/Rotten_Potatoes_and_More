@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     
-    app.state.model = tf.keras.models.load_model("models/rotten_potatoes.keras")
+    app.state.model = tf.keras.models.load_model("models/fruit_fresh_rotten_model.h5")
     yield
 
     del app.state.model
