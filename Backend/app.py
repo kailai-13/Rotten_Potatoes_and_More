@@ -20,7 +20,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins for now, you can restrict later
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -44,9 +44,9 @@ async def predict_image(file: UploadFile = File(...)):
         return JSONResponse(content={"error": "Invalid image"}, status_code=400)
 
     
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img = cv2.resize(img, (224, 224))
-    img = img.astype("float32") / 255.0 
+    img=img/255.0
     img = np.expand_dims(img, axis=0)
 
     model = app.state.model
