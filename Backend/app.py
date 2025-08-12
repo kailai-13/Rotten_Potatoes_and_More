@@ -47,5 +47,5 @@ async def predict_image(file: UploadFile = File(...)):
     else:
         result = int(np.argmax(prediction))
 
-    return {"prediction": result, "raw": prediction.tolist()}
+    return {"prediction": result}
 
