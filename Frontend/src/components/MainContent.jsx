@@ -88,10 +88,10 @@ const MainContent = () => {
               Prediction:{" "}
               <span
                 className={`font-bold ${
-                  prediction === 1 ? "text-green-600" : "text-red-600"
+                  prediction === 1 ? "text-red-600" :"text-green-600" 
                 }`}
               >
-                {prediction === 1 ? "Fresh" : "Rotten"}
+                {prediction === 1 ? "Rotten" : "Fresh"}
               </span>
             </p>
           </div>
