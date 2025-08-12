@@ -40,8 +40,7 @@ async def predict_image(file: UploadFile = File(...)):
 
     model = app.state.model
     prediction = model.predict(img)
-    print("Raw prediction:", prediction)  # ✅ Debugging
-
+    print("Raw prediction:", prediction)  
     if prediction.shape[-1] == 1:
         result = int(prediction[0][0] > 0.5)
     else:
