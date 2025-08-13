@@ -1,16 +1,21 @@
-# 🥔 Rotten Potatoes AI - Potato Quality Detection System
+# 🥔 Rotten Potatoes AI - Fresh vs Rotten Fruit Detection System
 
-A modern web application that uses artificial intelligence to detect the quality of potatoes from uploaded images. Built with React frontend and FastAPI backend powered by TensorFlow machine learning models.
+A modern web application that uses artificial intelligence to detect the quality of various fruits from uploaded images. Built with React frontend and FastAPI backend powered by TensorFlow machine learning models. Despite the playful "potato" branding, this system works with multiple types of fruits!
 
-![Rotten Potatoes AI](https://img.shields.iolds](https://img.shields.io/badge/T
+## 🚀 Features
 
-- **AI-Powered Detection**: Advanced deep learning model with 99.2% accuracy
+- **AI-Powered Detection**: Advanced deep learning model trained on diverse fruit datasets
+- **Multi-Fruit Support**: Works with various types of fruits (apples, bananas, oranges, potatoes, etc.)
 - **Real-time Predictions**: Get results in under 2 seconds
 - **Modern UI/UX**: Glassmorphism design with responsive layout
 - **File Validation**: Supports JPG, PNG, JPEG formats up to 10MB
 - **Error Handling**: Comprehensive error management and user feedback
 - **Multi-page Application**: Home, About, Services, and Contact pages
 - **Mobile Responsive**: Optimized for all device sizes
+
+## 🍎 About the Name
+
+The "Rotten Potatoes" name is a playful branding choice! The actual system is a comprehensive **fruit quality detection** application that can analyze various types of fruits to determine if they're fresh or rotten. The underlying machine learning model (`fruit_fresh_rotten_model.h5`) is trained on diverse fruit datasets.
 
 ## 🛠️ Technologies Used
 
@@ -23,7 +28,7 @@ A modern web application that uses artificial intelligence to detect the quality
 ### Backend
 - **FastAPI** - Modern, fast web framework for building APIs
 - **TensorFlow** - Machine learning platform
-- **OpenCV** - Computer vision library
+- **OpenCV** - Computer vision library for image preprocessing
 - **NumPy** - Scientific computing library
 - **Uvicorn** - ASGI web server
 
@@ -124,14 +129,14 @@ The frontend will start at `http://localhost:3000`
 ```
 rotten-potatoes-ai/
 ├── backend/
-│   ├── main.py                 # FastAPI application
+│   ├── main.py                       # FastAPI application
 │   ├── models/
-│   │   └── fruit_fresh_rotten_model.h5
+│   │   └── fruit_fresh_rotten_model.h5  # Trained ML model for fruits
 │   └── requirements.txt
 ├── frontend/
 │   ├── public/
 │   ├── src/
-│   │   ├── App.js             # Main React component
+│   │   ├── App.js                   # Main React component
 │   │   ├── index.js
 │   │   └── index.css
 │   ├── package.json
@@ -143,12 +148,12 @@ rotten-potatoes-ai/
 
 ### POST `/predict-image`
 
-Analyzes an uploaded image to determine potato quality.
+Analyzes an uploaded fruit image to determine quality.
 
 **Request:**
 - Method: `POST`
 - Content-Type: `multipart/form-data`
-- Body: Form data with `file` field containing the image
+- Body: Form data with `file` field containing the fruit image
 
 **Response:**
 ```json
@@ -170,18 +175,41 @@ Analyzes an uploaded image to determine potato quality.
 
 2. **Navigate to the application** in your web browser
 
-3. **Upload an image**:
+3. **Upload a fruit image**:
    - Click on the upload area or drag and drop an image
    - Supported formats: JPG, PNG, JPEG (max 10MB)
+   - Works with various fruits: apples, bananas, oranges, potatoes, etc.
 
 4. **Get prediction**:
    - Click "Upload & Predict" button
    - View real-time results (Fresh ✅ or Rotten 🍟)
 
 5. **Explore other pages**:
-   - About: Learn about the technology
+   - About: Learn about the AI technology
    - Services: View pricing plans
    - Contact: Get in touch
+
+## 🧠 Machine Learning Model
+
+The application uses a deep learning model trained on diverse fruit datasets:
+
+- **Model Architecture**: Convolutional Neural Network (CNN)
+- **Input Size**: 224x224 RGB images
+- **Training Data**: Various fruit types in fresh and rotten states
+- **Preprocessing**: Image resizing, normalization, and color space conversion
+- **Output**: Binary classification (0 = Fresh, 1 = Rotten)
+
+## 🍓 Supported Fruits
+
+While branded as "Rotten Potatoes," the system can analyze various fruits including:
+- 🍎 Apples
+- 🍌 Bananas  
+- 🍊 Oranges
+- 🥔 Potatoes
+- 🍓 Strawberries
+- And many more!
+
+*Note: Model performance may vary depending on the specific fruit type and how well it was represented in the training data.*
 
 ## 🔧 Configuration
 
@@ -191,7 +219,11 @@ You can modify the backend settings in `main.py`:
 
 ```python
 # Change model path
-app.state.model = tf.keras.models.load_model("path/to/your/model.h5")
+app.state.model = tf.keras.models.load_model("path/to/your/fruit_model.h5")
+
+# Modify image preprocessing parameters
+img = cv2.resize(img, (224, 224))  # Model input size
+img = img/255.0  # Normalization
 
 # Modify CORS settings
 app.add_middleware(
@@ -209,7 +241,10 @@ Update the API endpoint in `App.js`:
 
 ```javascript
 const response = await axios.post("http://your-backend-url/predict-image", formData, {
-  // ... configuration
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+  timeout: 30000,
 });
 ```
 
@@ -256,11 +291,13 @@ npm run build
 - [ ] User authentication and profiles
 - [ ] Batch image processing
 - [ ] Confidence score display from model
+- [ ] Fruit type classification (not just quality)
 - [ ] Image history and analytics
 - [ ] Mobile app development
-- [ ] Additional fruit/vegetable support
+- [ ] Expanded fruit variety support
 - [ ] API rate limiting
 - [ ] Database integration
+- [ ] Model retraining interface
 
 ## 🐛 Troubleshooting
 
@@ -268,8 +305,8 @@ npm run build
 
 **Backend not starting:**
 - Ensure all Python dependencies are installed
-- Check if the model file exists in the correct path
-- Verify Python version compatibility
+- Check if the `fruit_fresh_rotten_model.h5` file exists in the models/ directory
+- Verify Python version compatibility with TensorFlow
 
 **Frontend connection errors:**
 - Confirm backend is running on port 8000
@@ -278,8 +315,14 @@ npm run build
 
 **Model prediction errors:**
 - Ensure model file is not corrupted
-- Check image preprocessing steps
+- Check image preprocessing steps match training pipeline
 - Verify TensorFlow version compatibility
+- Try with different fruit images for testing
+
+**Poor prediction accuracy:**
+- Ensure uploaded images are clear and well-lit
+- Try with fruits that were well-represented in training data
+- Consider retraining model with more diverse datasets
 
 ## 📄 License
 
@@ -287,21 +330,27 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Authors
 
-- **Dr. Sarah Chen** - AI Research Lead
-- **Mike Rodriguez** - Software Engineer  
-- **Prof. James Wilson** - Agricultural Advisor
+- **Dr. Sarah Chen** - AI Research Lead & Model Development
+- **Mike Rodriguez** - Full Stack Development  
+- **Prof. James Wilson** - Food Science & Agricultural Advisor
 
 ## 🙏 Acknowledgments
 
 - TensorFlow team for the amazing ML framework
 - React team for the powerful frontend library
 - FastAPI team for the excellent backend framework
+- Open source fruit datasets contributors
+- Computer vision research community
 - Contributors and beta testers
 
 ## 📞 Support
 
-For support, email hello@rottenpotatoes.ai or join our Slack channel.
+For support, email hello@rottenpotatoes.ai or join our community discussions.
+
+**Need help with specific fruits or model performance? We're here to help!**
 
 ***
 
-**Built with ❤️ for better food quality control**
+**Built with ❤️ for better food quality control across all fruits**
+
+*P.S. - Yes, we know it's not just potatoes! 🍎🍌🍊*
