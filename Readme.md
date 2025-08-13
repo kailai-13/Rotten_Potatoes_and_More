@@ -1,4 +1,4 @@
-# 🥔 Rotten Potatoes AI - Potato Quality Detection System
+# 🥔 Rotten Potatoes AI - Fruit Quality Detection System
 
 A modern web application that uses artificial intelligence to detect the quality of potatoes from uploaded images. Built with React frontend and FastAPI backend powered by TensorFlow machine learning models.
 
