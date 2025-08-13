@@ -43,7 +43,7 @@ export default function Navbar() {
         <button onClick={() => setIsOpen(!isOpen)} className="text-white md:hidden">
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
-        <AnimatePresence mode="wait" ><motion.h1 className="hidden md:flex font-bold text-2xl text-white">DNA Disease Analysis</motion.h1></AnimatePresence>
+        <AnimatePresence mode="wait" ><motion.h1 className="hidden md:flex font-bold text-2xl text-white">Rotten Potatoes</motion.h1></AnimatePresence>
         {/* Desktop Menu (Always Visible) */}
         <ul className="hidden md:flex gap-6 text-white">
           {["Home", "About", "Services", "Contact"].map((item) => (
