@@ -353,4 +353,4 @@ For support, email hello@rottenpotatoes.ai or join our community discussions.
 
 **Built with ❤️ for better food quality control across all fruits**
 
-*P.S. - Yes, we know it's not just potatoes! 🍎🍌🍊*
+*P.S. - Yes, i know it's not potatoes! 🍎🍌🍊*
