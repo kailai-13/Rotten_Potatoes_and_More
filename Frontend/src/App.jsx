@@ -203,7 +203,7 @@ const HomePage = () => {
         <div className="relative z-10 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
             AI-Powered
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-400"> Potato </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-400"> Fruit </span>
             Quality Detection
           </h1>
           <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
